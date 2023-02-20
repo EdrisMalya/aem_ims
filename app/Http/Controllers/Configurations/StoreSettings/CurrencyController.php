@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CurrencyRequest;
 use App\Http\Resources\CurrencyResource;
 use App\Models\Currency;
+use App\Models\SystemSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -52,12 +53,16 @@ class CurrencyController extends Controller
     }
 
     public function destroy($lang, Request $request, $currency){
-        $this->allowed('currency-delete-project');
+        $this->allowed('currency-delete-currency');
         try {
             $currency = Currency::query()->findOrFail(decrypt($currency));
             /*if($currency->image){
                 HelperController::removeFile($currency->image, 'url');
             }*/
+            $check = SystemSetting::query()->where('currency_id', $currency->id)->exists();
+            if($check){
+                return back()->with(['message' => translate('Cannot be delete'), 'type' => 'error']);
+            }
             $currency->delete();
             return back()->with(['message' => translate('Deleted successfully'), 'type' => 'success']);
         }

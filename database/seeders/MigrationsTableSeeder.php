@@ -139,6 +139,48 @@ class MigrationsTableSeeder extends Seeder
                 'migration' => '0000_00_00_000000_create_websockets_statistics_entries_table',
                 'batch' => 1,
             ),
+            20 => 
+            array (
+                'id' => 21,
+                'migration' => '2023_02_12_191419_create_currencies_table',
+                'batch' => 10,
+            ),
+            21 => 
+            array (
+                'id' => 22,
+                'migration' => '2023_02_13_150027_create_warehouses_table',
+                'batch' => 11,
+            ),
+            22 => 
+            array (
+                'id' => 23,
+                'migration' => '2023_02_13_151150_create_provinces_table',
+                'batch' => 12,
+            ),
+            23 => 
+            array (
+                'id' => 24,
+                'migration' => '2023_02_14_180341_create_customers_table',
+                'batch' => 13,
+            ),
+            24 => 
+            array (
+                'id' => 25,
+                'migration' => '2023_02_14_190215_create_system_settings_table',
+                'batch' => 14,
+            ),
+            25 => 
+            array (
+                'id' => 26,
+                'migration' => '2023_02_18_172839_create_base_units_table',
+                'batch' => 15,
+            ),
+            26 => 
+            array (
+                'id' => 27,
+                'migration' => '2023_02_18_184153_create_brands_table',
+                'batch' => 16,
+            ),
         ));
         
         

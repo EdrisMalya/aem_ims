@@ -38,5 +38,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PublicWebsitesTableSeeder::class);
         $this->call(WidgetsTableSeeder::class);
         $this->call(WebsocketsStatisticsEntriesTableSeeder::class);
+        $this->call(CurrenciesTableSeeder::class);
+        $this->call(WarehousesTableSeeder::class);
+        $this->call(ProvincesTableSeeder::class);
+        $this->call(CustomersTableSeeder::class);
+        $this->call(SystemSettingsTableSeeder::class);
+        $this->call(BaseUnitsTableSeeder::class);
+        $this->call(BrandsTableSeeder::class);
     }
 }

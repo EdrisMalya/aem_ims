@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WarehouseRequest;
 use App\Http\Resources\WarehouseResource;
 use App\Models\Province;
+use App\Models\SystemSetting;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -63,6 +64,10 @@ class WarehouseController extends Controller
             /*if($warehouse->image){
                 HelperController::removeFile($warehouse->image, 'url');
             }*/
+            $check = SystemSetting::query()->where('warehouse_id', $warehouse->id)->exists();
+            if($check){
+                return back()->with(['message' => translate('Cannot be deleted'), 'type' => 'error']);
+            }
             $warehouse->delete();
             return back()->with(['message' => translate('Deleted successfully'), 'type' => 'success']);
         }

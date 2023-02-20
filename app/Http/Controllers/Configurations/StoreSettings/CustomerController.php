@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
 use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
+use App\Models\SystemSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ class CustomerController extends Controller
         $this->allowed('customers-access');
         $customers = Customer::query();
         $datatable = new DatatableBuilder($customers, $request, ['name', 'phone_number', 'email', 'address', ]);
-        return Inertia::render('Customer/CustomerIndex',[
+        return Inertia::render('UserManagement/Customer/CustomerIndex',[
             'customers' => CustomerResource::collection($datatable->build()),
             'active' => 'customers'
         ]);
@@ -51,12 +52,16 @@ class CustomerController extends Controller
     }
 
     public function destroy($lang, Request $request, $customer){
-        $this->allowed('customers-delete-project');
+        $this->allowed('customers-delete-customer');
         try {
             $customer = Customer::query()->findOrFail(decrypt($customer));
             /*if($customers->image){
                 HelperController::removeFile($customers->image, 'url');
             }*/
+            $check = SystemSetting::query()->where('customer_id', $customer->id)->exists();
+            if($check){
+                return back()->with(['message' => translate('Cannot be deleted'), 'type' => 'error']);
+            }
             $customer->delete();
             return back()->with(['message' => translate('Deleted successfully'), 'type' => 'success']);
         }

@@ -26,7 +26,7 @@ class PermissionGroupsTableSeeder extends Seeder
                 'name' => 'User management',
                 'sort' => 0,
                 'created_at' => '2022-12-11 06:04:50',
-                'updated_at' => '2023-02-12 01:43:47',
+                'updated_at' => '2023-02-13 18:21:50',
             ),
             1 => 
             array (
@@ -42,18 +42,18 @@ class PermissionGroupsTableSeeder extends Seeder
                 'id' => 3,
                 'permission_group_id' => 1,
                 'name' => 'Roles',
-                'sort' => 1,
+                'sort' => 4,
                 'created_at' => '2022-12-11 06:05:11',
-                'updated_at' => '2022-12-11 06:05:11',
+                'updated_at' => '2023-02-14 18:07:42',
             ),
             3 => 
             array (
                 'id' => 4,
                 'permission_group_id' => 0,
                 'name' => 'Configuration',
-                'sort' => 1,
+                'sort' => 2,
                 'created_at' => '2022-12-11 10:24:12',
-                'updated_at' => '2023-02-12 01:41:11',
+                'updated_at' => '2023-02-14 20:54:24',
             ),
             4 => 
             array (
@@ -114,9 +114,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'id' => 14,
                 'permission_group_id' => 4,
                 'name' => 'Public website',
-                'sort' => 2,
+                'sort' => 3,
                 'created_at' => '2022-12-26 20:10:54',
-                'updated_at' => '2022-12-26 20:10:54',
+                'updated_at' => '2023-02-12 18:49:59',
             ),
             11 => 
             array (
@@ -156,12 +156,75 @@ class PermissionGroupsTableSeeder extends Seeder
             ),
             15 => 
             array (
-                'id' => 52,
-                'permission_group_id' => 0,
-                'name' => 'Contact',
+                'id' => 53,
+                'permission_group_id' => 4,
+                'name' => 'Store settings',
                 'sort' => 2,
-                'created_at' => '2023-02-12 01:39:58',
-                'updated_at' => '2023-02-12 01:43:47',
+                'created_at' => '2023-02-12 18:49:56',
+                'updated_at' => '2023-02-12 18:49:59',
+            ),
+            16 => 
+            array (
+                'id' => 55,
+                'permission_group_id' => 53,
+                'name' => 'Currency',
+                'sort' => 0,
+                'created_at' => '2023-02-12 19:24:54',
+                'updated_at' => '2023-02-12 19:24:54',
+            ),
+            17 => 
+            array (
+                'id' => 57,
+                'permission_group_id' => 53,
+                'name' => 'Warehouse',
+                'sort' => 1,
+                'created_at' => '2023-02-13 15:04:38',
+                'updated_at' => '2023-02-13 15:04:38',
+            ),
+            18 => 
+            array (
+                'id' => 59,
+                'permission_group_id' => 1,
+                'name' => 'Customers',
+                'sort' => 1,
+                'created_at' => '2023-02-14 18:07:15',
+                'updated_at' => '2023-02-14 18:07:42',
+            ),
+            19 => 
+            array (
+                'id' => 60,
+                'permission_group_id' => 0,
+                'name' => 'Products management',
+                'sort' => 1,
+                'created_at' => '2023-02-14 20:54:22',
+                'updated_at' => '2023-02-14 21:07:55',
+            ),
+            20 => 
+            array (
+                'id' => 61,
+                'permission_group_id' => 60,
+                'name' => 'Product',
+                'sort' => 0,
+                'created_at' => '2023-02-14 21:12:48',
+                'updated_at' => '2023-02-14 21:12:48',
+            ),
+            21 => 
+            array (
+                'id' => 63,
+                'permission_group_id' => 60,
+                'name' => 'Base unit',
+                'sort' => 2,
+                'created_at' => '2023-02-18 17:43:54',
+                'updated_at' => '2023-02-18 18:47:51',
+            ),
+            22 => 
+            array (
+                'id' => 65,
+                'permission_group_id' => 60,
+                'name' => 'Brand',
+                'sort' => 1,
+                'created_at' => '2023-02-18 18:47:01',
+                'updated_at' => '2023-02-18 18:47:51',
             ),
         ));
         

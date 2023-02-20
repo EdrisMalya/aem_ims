@@ -345,39 +345,210 @@ class PermissionsTableSeeder extends Seeder
             ),
             36 => 
             array (
-                'id' => 66,
-                'permission_group_id' => 52,
+                'id' => 70,
+                'permission_group_id' => 53,
                 'name' => 'Access',
-                'key' => 'access',
-                'created_at' => '2023-02-12 01:39:58',
-                'updated_at' => '2023-02-12 01:39:58',
+                'key' => 'store-settings-access',
+                'created_at' => '2023-02-12 18:50:04',
+                'updated_at' => '2023-02-12 18:50:04',
             ),
             37 => 
             array (
-                'id' => 67,
-                'permission_group_id' => 52,
-                'name' => 'Create Contact',
-                'key' => 'create-contact',
-                'created_at' => '2023-02-12 01:39:58',
-                'updated_at' => '2023-02-12 01:39:58',
+                'id' => 75,
+                'permission_group_id' => 55,
+                'name' => 'Access',
+                'key' => 'currency-access',
+                'created_at' => '2023-02-12 19:25:00',
+                'updated_at' => '2023-02-12 19:25:00',
             ),
             38 => 
             array (
-                'id' => 68,
-                'permission_group_id' => 52,
-                'name' => 'Edit Contact',
-                'key' => 'edit-contact',
-                'created_at' => '2023-02-12 01:39:58',
-                'updated_at' => '2023-02-12 01:39:58',
+                'id' => 76,
+                'permission_group_id' => 55,
+                'name' => 'Create currency',
+                'key' => 'currency-create-currency',
+                'created_at' => '2023-02-12 19:25:09',
+                'updated_at' => '2023-02-12 19:25:09',
             ),
             39 => 
             array (
-                'id' => 69,
-                'permission_group_id' => 52,
-                'name' => 'Delete Contact',
-                'key' => 'delete-contact',
-                'created_at' => '2023-02-12 01:39:58',
-                'updated_at' => '2023-02-12 01:39:58',
+                'id' => 77,
+                'permission_group_id' => 55,
+                'name' => 'Edit currency',
+                'key' => 'currency-edit-currency',
+                'created_at' => '2023-02-12 19:25:17',
+                'updated_at' => '2023-02-12 19:25:17',
+            ),
+            40 => 
+            array (
+                'id' => 78,
+                'permission_group_id' => 55,
+                'name' => 'Delete currency',
+                'key' => 'currency-delete-currency',
+                'created_at' => '2023-02-12 19:25:21',
+                'updated_at' => '2023-02-12 19:25:21',
+            ),
+            41 => 
+            array (
+                'id' => 83,
+                'permission_group_id' => 57,
+                'name' => 'Access',
+                'key' => 'warehouse-access',
+                'created_at' => '2023-02-13 15:04:44',
+                'updated_at' => '2023-02-13 15:04:44',
+            ),
+            42 => 
+            array (
+                'id' => 84,
+                'permission_group_id' => 57,
+                'name' => 'Create Warehouse',
+                'key' => 'warehouse-create-warehouse',
+                'created_at' => '2023-02-13 15:04:58',
+                'updated_at' => '2023-02-13 15:04:58',
+            ),
+            43 => 
+            array (
+                'id' => 85,
+                'permission_group_id' => 57,
+                'name' => 'Edit Warehouse',
+                'key' => 'warehouse-edit-warehouse',
+                'created_at' => '2023-02-13 15:05:02',
+                'updated_at' => '2023-02-13 15:05:02',
+            ),
+            44 => 
+            array (
+                'id' => 86,
+                'permission_group_id' => 57,
+                'name' => 'Delete',
+                'key' => 'warehouse-delete',
+                'created_at' => '2023-02-13 15:05:06',
+                'updated_at' => '2023-02-13 15:05:06',
+            ),
+            45 => 
+            array (
+                'id' => 91,
+                'permission_group_id' => 59,
+                'name' => 'Access',
+                'key' => 'customers-access',
+                'created_at' => '2023-02-14 18:07:20',
+                'updated_at' => '2023-02-14 18:07:20',
+            ),
+            46 => 
+            array (
+                'id' => 92,
+                'permission_group_id' => 59,
+                'name' => 'Create Customer',
+                'key' => 'customers-create-customer',
+                'created_at' => '2023-02-14 18:07:28',
+                'updated_at' => '2023-02-14 18:07:28',
+            ),
+            47 => 
+            array (
+                'id' => 93,
+                'permission_group_id' => 59,
+                'name' => 'Edit Customer',
+                'key' => 'customers-edit-customer',
+                'created_at' => '2023-02-14 18:07:33',
+                'updated_at' => '2023-02-14 18:07:33',
+            ),
+            48 => 
+            array (
+                'id' => 94,
+                'permission_group_id' => 59,
+                'name' => 'Delete Customer',
+                'key' => 'customers-delete-customer',
+                'created_at' => '2023-02-14 18:07:38',
+                'updated_at' => '2023-02-14 18:07:38',
+            ),
+            49 => 
+            array (
+                'id' => 96,
+                'permission_group_id' => 60,
+                'name' => 'Access',
+                'key' => 'products-management-access',
+                'created_at' => '2023-02-14 21:07:59',
+                'updated_at' => '2023-02-14 21:07:59',
+            ),
+            50 => 
+            array (
+                'id' => 97,
+                'permission_group_id' => 61,
+                'name' => 'Access',
+                'key' => 'product-access',
+                'created_at' => '2023-02-14 21:12:52',
+                'updated_at' => '2023-02-14 21:12:52',
+            ),
+            51 => 
+            array (
+                'id' => 102,
+                'permission_group_id' => 63,
+                'name' => 'Access',
+                'key' => 'base-unit-access',
+                'created_at' => '2023-02-18 17:44:00',
+                'updated_at' => '2023-02-18 17:44:00',
+            ),
+            52 => 
+            array (
+                'id' => 103,
+                'permission_group_id' => 63,
+                'name' => 'Create base uit',
+                'key' => 'base-unit-create-base-uit',
+                'created_at' => '2023-02-18 17:44:07',
+                'updated_at' => '2023-02-18 17:44:07',
+            ),
+            53 => 
+            array (
+                'id' => 104,
+                'permission_group_id' => 63,
+                'name' => 'Edit base unit',
+                'key' => 'base-unit-edit-base-unit',
+                'created_at' => '2023-02-18 17:44:15',
+                'updated_at' => '2023-02-18 17:44:15',
+            ),
+            54 => 
+            array (
+                'id' => 105,
+                'permission_group_id' => 63,
+                'name' => 'Delete base unit',
+                'key' => 'base-unit-delete-base-unit',
+                'created_at' => '2023-02-18 17:44:20',
+                'updated_at' => '2023-02-18 17:44:20',
+            ),
+            55 => 
+            array (
+                'id' => 112,
+                'permission_group_id' => 65,
+                'name' => 'Access',
+                'key' => 'brand-access',
+                'created_at' => '2023-02-18 18:47:27',
+                'updated_at' => '2023-02-18 18:47:27',
+            ),
+            56 => 
+            array (
+                'id' => 113,
+                'permission_group_id' => 65,
+                'name' => 'Create brand',
+                'key' => 'brand-create-brand',
+                'created_at' => '2023-02-18 18:47:32',
+                'updated_at' => '2023-02-18 18:47:32',
+            ),
+            57 => 
+            array (
+                'id' => 114,
+                'permission_group_id' => 65,
+                'name' => 'Edit brand',
+                'key' => 'brand-edit-brand',
+                'created_at' => '2023-02-18 18:47:36',
+                'updated_at' => '2023-02-18 18:47:36',
+            ),
+            58 => 
+            array (
+                'id' => 115,
+                'permission_group_id' => 65,
+                'name' => 'Delete brand',
+                'key' => 'brand-delete-brand',
+                'created_at' => '2023-02-18 18:47:41',
+                'updated_at' => '2023-02-18 18:47:41',
             ),
         ));
         

@@ -5,22 +5,22 @@ import { Button } from '@mui/material'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import Datatable from '@/Components/Datatable/Datatable'
 import ProtectedComponent from '@/Components/ProtectedComponent'
-import CustomerForm from '@/Pages/Customer/CustomerForm'
-import UserManagementLinks from '@/Pages/UserManagement/UserManagementLinks'
+import BaseunitForm from '@/Pages/ProductManagement/Baseunit/BaseunitForm'
+import ProductManagementLinks from '@/Pages/ProductManagement/ProductManagementLinks'
 
-const CustomerIndex = ({ customers, active }) => {
+const BaseunitIndex = ({ baseunits }) => {
     const [showForm, setShowForm] = React.useState(false)
-    const [customer, setCustomer] = React.useState(false)
+    const [baseunit, setBaseunit] = React.useState(false)
     const { translate } = useLanguage()
 
     return (
         <Authenticated
-            active={'user_management'}
-            navBarOptions={<UserManagementLinks active={active} />}
-            title={translate('Customers')}>
+            active={'product-management'}
+            navBarOptions={<ProductManagementLinks translate={translate} />}
+            title={translate('Base units')}>
             <div className={'flex items-center justify-between'}>
-                <h2 className={'text-xl'}>{translate('List of customers')}</h2>
-                <ProtectedComponent role={'customer-create-customer'}>
+                <h2 className={'text-xl'}>{translate('List of base units')}</h2>
+                <ProtectedComponent role={'base-unit-create-base-uit'}>
                     <Button
                         onClick={() => setShowForm(true)}
                         variant={'outlined'}
@@ -31,12 +31,13 @@ const CustomerIndex = ({ customers, active }) => {
             </div>
             <div className={'mt-8'}>
                 <Datatable
-                    editRole={'customers-edit-customer'}
-                    deleteRole={'customers-delete-customer'}
+                    editRole={'base-unit-edit-base-unit'}
+                    deleteRole={'base-unit-delete-base-unit'}
+                    showNumber={true}
                     fromResource={true}
-                    data={customers}
-                    handleEditAction={customer => {
-                        setCustomer(customer)
+                    data={baseunits}
+                    handleEditAction={baseunit => {
+                        setBaseunit(baseunit)
                         setShowForm(true)
                     }}
                     columns={[
@@ -46,42 +47,26 @@ const CustomerIndex = ({ customers, active }) => {
                             sort: true,
                         },
                         {
-                            name: translate('Phone number'),
-                            key: 'phone_number',
-                            sort: true,
-                        },
-                        {
-                            name: translate('Email'),
-                            key: 'email',
-                            sort: true,
-                        },
-                        {
-                            name: translate('Address'),
-                            key: 'address',
-                            sort: true,
-                        },
-                        {
                             name: translate('Created at'),
                             key: 'created_at',
-                            sort: true,
                             data_type: 'date',
-                            format: 'YYYY-MM-DD hh:mm A',
+                            format: 'YYYY-MM-DD',
                         },
                     ]}
                 />
             </div>
             {showForm && (
-                <CustomerForm
+                <BaseunitForm
                     translate={translate}
                     onClose={() => {
-                        setCustomer(null)
+                        setBaseunit(null)
                         setShowForm(false)
                     }}
-                    customer={customer}
+                    baseunit={baseunit}
                 />
             )}
         </Authenticated>
     )
 }
 
-export default CustomerIndex
+export default BaseunitIndex

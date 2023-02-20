@@ -37,6 +37,7 @@ const SidebarLinks = ({ active }) => {
                     active={active === 'user_management'}
                 />
             </ProtectedComponent>
+
             {/*Other links*/}
 
             <ProtectedComponent role={'configuration-access'}>

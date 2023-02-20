@@ -39,11 +39,8 @@ Route::group(['prefix'=>'{lang}'], function(){
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-            /***************************** Customer Routes ****************************/
-            Route::resource('customer', \App\Http\Controllers\Configurations\StoreSettings\CustomerController::class);
-
             /************************** This code should never be deleted ****************************/
+
             /**** Other routes ****/
 
             /*********************************** Products Routes ****************************/
@@ -53,6 +50,12 @@ Route::group(['prefix'=>'{lang}'], function(){
                     return Inertia::render('ProductManagement/ProductManagementIndex');
                 })->name('products-management.index');
                 Route::resource('product', \App\Http\Controllers\ProductManagement\ProductController::class);
+
+                /***************************** Baseunit Routes ****************************/
+                Route::resource('baseunit', \App\Http\Controllers\BaseunitController::class);
+
+                /***************************** Brand Routes ****************************/
+                Route::resource('brand', \App\Http\Controllers\BrandController::class);
             });
             /*************************************** User management routes ****************************************/
             Route::group(['prefix' => 'user/management'], function (){
@@ -63,6 +66,9 @@ Route::group(['prefix'=>'{lang}'], function(){
 
                 /********************************** Users routes ********************************/
                 Route::resource('users', \App\Http\Controllers\UserManagement\UserController::class);
+
+                /***************************** Customer Routes ****************************/
+                Route::resource('customer', \App\Http\Controllers\Configurations\StoreSettings\CustomerController::class);
 
                 /*************************************** Role routes *****************************************/
                 Route::resource('role', \App\Http\Controllers\UserManagement\RoleController::class);

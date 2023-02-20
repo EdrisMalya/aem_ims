@@ -22,7 +22,7 @@ const TableBody = ({
     lang,
     deleteRoute,
     translate,
-    shouldIShowTheColumn
+    shouldIShowTheColumn,
 }) => {
     let counter = 1
     const resolve = (path, obj) => {
@@ -60,6 +60,13 @@ const TableBody = ({
                             ? 'Inactive'
                             : column?.false_value
                     return resolve(column.key, item) ? trueValue : falseValue
+                case 'image':
+                    return (
+                        <img
+                            className={column?.className}
+                            src={resolve(column.key, item)}
+                        />
+                    )
             }
         }
     }
@@ -125,13 +132,16 @@ const TableBody = ({
                                 </div>
                             </th>
                         )}
-                        {columns?.map(column => (
-                            shouldIShowTheColumn(column.key) && (
-                                <td key={column?.key} className="py-2 px-6 text-xs">
-                                    {tdDataBuilder(column, item)}
-                                </td>
-                            )
-                        ))}
+                        {columns?.map(
+                            column =>
+                                shouldIShowTheColumn(column.key) && (
+                                    <td
+                                        key={column?.key}
+                                        className="py-2 px-6 text-xs">
+                                        {tdDataBuilder(column, item)}
+                                    </td>
+                                ),
+                        )}
                         {actions && shouldIShowTheColumn('actions') && (
                             <td className="py-2 px-6 text-xs">
                                 {editAction && (
