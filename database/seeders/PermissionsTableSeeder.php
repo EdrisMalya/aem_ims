@@ -550,6 +550,87 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2023-02-18 18:47:41',
                 'updated_at' => '2023-02-18 18:47:41',
             ),
+            59 => 
+            array (
+                'id' => 120,
+                'permission_group_id' => 67,
+                'name' => 'Access',
+                'key' => 'product-categories-access',
+                'created_at' => '2023-02-20 10:08:10',
+                'updated_at' => '2023-02-20 10:08:10',
+            ),
+            60 => 
+            array (
+                'id' => 121,
+                'permission_group_id' => 67,
+                'name' => 'Create category',
+                'key' => 'product-categories-create-category',
+                'created_at' => '2023-02-20 10:08:22',
+                'updated_at' => '2023-02-20 10:08:22',
+            ),
+            61 => 
+            array (
+                'id' => 122,
+                'permission_group_id' => 67,
+                'name' => 'Edit category',
+                'key' => 'product-categories-edit-category',
+                'created_at' => '2023-02-20 10:08:29',
+                'updated_at' => '2023-02-20 10:08:29',
+            ),
+            62 => 
+            array (
+                'id' => 123,
+                'permission_group_id' => 67,
+                'name' => 'Delete category',
+                'key' => 'product-categories-delete-category',
+                'created_at' => '2023-02-20 10:09:21',
+                'updated_at' => '2023-02-20 10:09:21',
+            ),
+            63 => 
+            array (
+                'id' => 128,
+                'permission_group_id' => 69,
+                'name' => 'Access',
+                'key' => 'supplier-access',
+                'created_at' => '2023-02-20 11:57:59',
+                'updated_at' => '2023-02-20 11:57:59',
+            ),
+            64 => 
+            array (
+                'id' => 129,
+                'permission_group_id' => 69,
+                'name' => 'Create supplier',
+                'key' => 'supplier-create-supplier',
+                'created_at' => '2023-02-20 11:58:07',
+                'updated_at' => '2023-02-20 11:58:07',
+            ),
+            65 => 
+            array (
+                'id' => 130,
+                'permission_group_id' => 69,
+                'name' => 'Edit supplier',
+                'key' => 'supplier-edit-supplier',
+                'created_at' => '2023-02-20 11:58:16',
+                'updated_at' => '2023-02-20 11:58:16',
+            ),
+            66 => 
+            array (
+                'id' => 131,
+                'permission_group_id' => 69,
+                'name' => 'Delete supplier',
+                'key' => 'supplier-delete-supplier',
+                'created_at' => '2023-02-20 11:58:22',
+                'updated_at' => '2023-02-20 11:58:22',
+            ),
+            67 => 
+            array (
+                'id' => 133,
+                'permission_group_id' => 61,
+                'name' => 'Add product',
+                'key' => 'product-add-product',
+                'created_at' => '2023-02-20 13:02:32',
+                'updated_at' => '2023-02-20 13:02:32',
+            ),
         ));
         
         

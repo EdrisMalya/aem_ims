@@ -181,6 +181,24 @@ class MigrationsTableSeeder extends Seeder
                 'migration' => '2023_02_18_184153_create_brands_table',
                 'batch' => 16,
             ),
+            27 => 
+            array (
+                'id' => 28,
+                'migration' => '2023_02_20_095853_create_product_categories_table',
+                'batch' => 17,
+            ),
+            28 => 
+            array (
+                'id' => 29,
+                'migration' => '2023_02_20_114613_create_supplieers_table',
+                'batch' => 18,
+            ),
+            29 => 
+            array (
+                'id' => 30,
+                'migration' => '2023_02_20_115240_create_suppliers_table',
+                'batch' => 19,
+            ),
         ));
         
         

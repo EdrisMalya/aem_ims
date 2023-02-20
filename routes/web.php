@@ -51,12 +51,16 @@ Route::group(['prefix'=>'{lang}'], function(){
                 })->name('products-management.index');
                 Route::resource('product', \App\Http\Controllers\ProductManagement\ProductController::class);
 
-                /***************************** Baseunit Routes ****************************/
-                Route::resource('baseunit', \App\Http\Controllers\BaseunitController::class);
+                /***************************** Productcategory Routes ****************************/
+                Route::resource('productcategory', \App\Http\Controllers\ProductcategoryController::class);
 
                 /***************************** Brand Routes ****************************/
                 Route::resource('brand', \App\Http\Controllers\BrandController::class);
+
+                /***************************** Baseunit Routes ****************************/
+                Route::resource('baseunit', \App\Http\Controllers\BaseunitController::class);
             });
+
             /*************************************** User management routes ****************************************/
             Route::group(['prefix' => 'user/management'], function (){
                 Route::get('/', function(){
@@ -69,6 +73,9 @@ Route::group(['prefix'=>'{lang}'], function(){
 
                 /***************************** Customer Routes ****************************/
                 Route::resource('customer', \App\Http\Controllers\Configurations\StoreSettings\CustomerController::class);
+
+                /***************************** Supplier Routes ****************************/
+                Route::resource('supplier', \App\Http\Controllers\SupplierController::class);
 
                 /*************************************** Role routes *****************************************/
                 Route::resource('role', \App\Http\Controllers\UserManagement\RoleController::class);

@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use App\Http\Controllers\Configurations\LanguageController;
 use App\Http\Controllers\Configurations\LanguageDictionaryController;
+use App\Http\Resources\SystemSettingResource;
 use App\Models\Language;
+use App\Models\SystemSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Inertia\Middleware;
@@ -55,7 +57,10 @@ class HandleInertiaRequests extends Middleware
             'lang' => $request->lang,
             'dir' => Language::whereAbbr($request->lang)->first()?->direction,
             'translations' => LanguageDictionaryController::returnAllWords($request->lang),
-            'all_languages' => LanguageController::getAllLanguages()
+            'all_languages' => LanguageController::getAllLanguages(),
+            'system_setting' => cache()->remember('system_settings', 60 * 60 * 24, function (){
+                return new SystemSettingResource(SystemSetting::query()->first());
+            })
         ]);
     }
 }

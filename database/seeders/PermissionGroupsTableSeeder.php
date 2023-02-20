@@ -87,9 +87,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'id' => 10,
                 'permission_group_id' => 1,
                 'name' => 'Login log',
-                'sort' => 2,
+                'sort' => 5,
                 'created_at' => '2022-12-19 06:28:45',
-                'updated_at' => '2023-02-11 12:00:47',
+                'updated_at' => '2023-02-20 11:57:55',
             ),
             8 => 
             array (
@@ -206,7 +206,7 @@ class PermissionGroupsTableSeeder extends Seeder
                 'name' => 'Product',
                 'sort' => 0,
                 'created_at' => '2023-02-14 21:12:48',
-                'updated_at' => '2023-02-14 21:12:48',
+                'updated_at' => '2023-02-20 13:01:53',
             ),
             21 => 
             array (
@@ -222,9 +222,27 @@ class PermissionGroupsTableSeeder extends Seeder
                 'id' => 65,
                 'permission_group_id' => 60,
                 'name' => 'Brand',
-                'sort' => 1,
+                'sort' => 3,
                 'created_at' => '2023-02-18 18:47:01',
-                'updated_at' => '2023-02-18 18:47:51',
+                'updated_at' => '2023-02-20 10:08:04',
+            ),
+            23 => 
+            array (
+                'id' => 67,
+                'permission_group_id' => 60,
+                'name' => 'Product categories',
+                'sort' => 1,
+                'created_at' => '2023-02-20 10:07:59',
+                'updated_at' => '2023-02-20 13:01:53',
+            ),
+            24 => 
+            array (
+                'id' => 69,
+                'permission_group_id' => 1,
+                'name' => 'Supplier',
+                'sort' => 2,
+                'created_at' => '2023-02-20 11:57:51',
+                'updated_at' => '2023-02-20 11:57:55',
             ),
         ));
         

@@ -35,6 +35,7 @@ const PermissionForm = ({ onClose, permissionParentGroupId, lang }) => {
             onSuccess: () => {
                 handleClose()
             },
+            preserveScroll: true,
         })
     }
 

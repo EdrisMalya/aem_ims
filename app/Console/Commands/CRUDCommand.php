@@ -186,7 +186,7 @@ class CRUDCommand extends Command
             <ProtectedComponent role={'".strtolower($model_name)."-access'}>
                 <SidebarLinkButton
                     dir={dir}
-                    icon={<ViewColumn className={'h-5'} />}
+                    icon={<ViewColumnIcon className={'h-5'} />}
                     url={route('".strtolower($model_name).".index', { lang })}
                     label={translate('".$model_name."')}
                     active={active === '".strtolower($model_name)."'}

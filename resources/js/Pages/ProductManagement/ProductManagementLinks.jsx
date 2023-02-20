@@ -15,6 +15,8 @@ const ProductManagementLinks = ({ translate }) => {
                 return 'products'
             case 'base-unit':
                 return 'base-unit'
+            case 'product-categories':
+                return 'product-categories'
             case 'brands':
                 return 'brands'
         }
@@ -32,6 +34,19 @@ const ProductManagementLinks = ({ translate }) => {
                                 : 'outlined'
                         }>
                         {translate('Products')}
+                    </Button>
+                </Link>
+            </ProtectedComponent>
+            <ProtectedComponent role={'product-categories-access'}>
+                <Link href={route('productcategory.index', { lang })}>
+                    <Button
+                        endIcon={<StoreIcon fontSize={'small'} />}
+                        variant={
+                            activeLink() === 'product-categories'
+                                ? 'contained'
+                                : 'outlined'
+                        }>
+                        {translate('Product categories')}
                     </Button>
                 </Link>
             </ProtectedComponent>

@@ -79,6 +79,7 @@ const PermissionIndex = ({ auth, active, permissions, lang }) => {
                         onSuccess: () => {
                             setPageLoading[1](false)
                         },
+                        preserveScroll: true,
                     },
                 )
             }

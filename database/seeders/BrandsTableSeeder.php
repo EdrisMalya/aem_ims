@@ -22,10 +22,10 @@ class BrandsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 5,
-                'image' => 'http://127.0.0.1:8000/storage/brand_images/ajYKPMC6pAIrUoY5naXbVyO5L9MHRnFPvUPiuZP4.png',
+                'image' => 'http://127.0.0.1:8000/storage/brand_images/ymd4v5rBYsO1vqjFYJ1TtdewZSlGuOKSVi8nVglK.png',
                 'name' => 'Apple',
                 'created_at' => '2023-02-18 19:15:13',
-                'updated_at' => '2023-02-18 19:15:13',
+                'updated_at' => '2023-02-20 09:42:54',
             ),
         ));
         

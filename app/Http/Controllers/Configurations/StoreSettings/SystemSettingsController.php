@@ -51,6 +51,7 @@ class SystemSettingsController extends Controller
         unset($data['customer']);
         unset($data['currency']);
         $data['logo'] = asset('storage/'.$request->file('logo')->store('store_logo', 'public'));
+        cache()->forget('system_settings');
         SystemSetting::query()->create($data);
         return back()->with(['message' => translate('Saved successfully'), 'type' => 'success']);
     }
@@ -76,6 +77,7 @@ class SystemSettingsController extends Controller
             }else{
                 $data['logo'] = $system_setting->logo;
             }
+            cache()->forget('system_settings');
             $system_setting->update($data);
             return back()->with(['message' => translate('Updated successfully'), 'type' => 'success']);
         }catch (Exception $exception){

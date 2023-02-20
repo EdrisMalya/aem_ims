@@ -6,6 +6,7 @@ import { ListBulletIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { LockClosedIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import useLanguage from '@/hooks/useLanguage'
 import PeopleIcon from '@mui/icons-material/People'
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle'
 
 const UserManagementLinks = ({ active }) => {
     const { lang } = usePage().props
@@ -23,6 +24,8 @@ const UserManagementLinks = ({ active }) => {
                 return 'log_activities'
             case 'customers':
                 return 'customers'
+            case 'suppliers':
+                return 'suppliers'
         }
     }
 
@@ -33,6 +36,7 @@ const UserManagementLinks = ({ active }) => {
             <ProtectedComponent role={'users-access'}>
                 <Link href={route('users.index', { lang })}>
                     <Button
+                        size={'small'}
                         startIcon={<UsersIcon className={'h-4 rtl:ml-3'} />}
                         variant={
                             activeLink() === 'users' ? 'contained' : 'outlined'
@@ -44,6 +48,7 @@ const UserManagementLinks = ({ active }) => {
             <ProtectedComponent role={'customers-access'}>
                 <Link href={route('customer.index', { lang })}>
                     <Button
+                        size={'small'}
                         startIcon={<PeopleIcon className={'h-4 rtl:ml-3'} />}
                         variant={
                             activeLink() === 'customers'
@@ -54,9 +59,26 @@ const UserManagementLinks = ({ active }) => {
                     </Button>
                 </Link>
             </ProtectedComponent>
+            <ProtectedComponent role={'customers-access'}>
+                <Link href={route('supplier.index', { lang })}>
+                    <Button
+                        size={'small'}
+                        startIcon={
+                            <AirportShuttleIcon className={'h-4 rtl:ml-3'} />
+                        }
+                        variant={
+                            activeLink() === 'suppliers'
+                                ? 'contained'
+                                : 'outlined'
+                        }>
+                        {translate('Suppliers')}
+                    </Button>
+                </Link>
+            </ProtectedComponent>
             <ProtectedComponent role={'roles-access'}>
                 <Link href={route('role.index', { lang })}>
                     <Button
+                        size={'small'}
                         startIcon={
                             <UserCircleIcon className={'h-4 rtl:ml-3'} />
                         }
@@ -70,6 +92,7 @@ const UserManagementLinks = ({ active }) => {
             <ProtectedComponent role={'login-log-access'}>
                 <Link href={route('login_log.index', { lang })}>
                     <Button
+                        size={'small'}
                         startIcon={
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +120,7 @@ const UserManagementLinks = ({ active }) => {
             <ProtectedComponent role={'log-activity-access'}>
                 <Link href={route('log.activities.index', { lang })}>
                     <Button
+                        size={'small'}
                         startIcon={<ListBulletIcon className={'h-4'} />}
                         variant={
                             activeLink() === 'log_activities'
@@ -110,6 +134,7 @@ const UserManagementLinks = ({ active }) => {
             <ProtectedComponent onlyForAdmin={true}>
                 <Link href={route('permissions.index', { lang })}>
                     <Button
+                        size={'small'}
                         startIcon={<LockClosedIcon className={'h-4'} />}
                         variant={
                             activeLink() === 'permission'

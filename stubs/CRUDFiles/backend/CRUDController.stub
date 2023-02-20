@@ -50,7 +50,7 @@ class {{ModelClassName}}Controller extends Controller
     }
 
     public function destroy($lang, Request $request, ${{modal_small_name}}){
-        $this->allowed('{{modal_small_name}}-delete-project');
+        $this->allowed('{{modal_small_name}}-delete-{{modal_small_name}}');
         try {
             ${{modal_small_name}} = {{ModelClassName}}::query()->findOrFail(decrypt(${{modal_small_name}}));
             /*if(${{modal_small_name}}->image){

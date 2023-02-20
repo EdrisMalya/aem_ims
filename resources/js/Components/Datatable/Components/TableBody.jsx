@@ -61,10 +61,19 @@ const TableBody = ({
                             : column?.false_value
                     return resolve(column.key, item) ? trueValue : falseValue
                 case 'image':
-                    return (
+                    return resolve(column.key, item) ? (
                         <img
                             className={column?.className}
                             src={resolve(column.key, item)}
+                        />
+                    ) : (
+                        <img
+                            className={column?.className}
+                            src={
+                                route().t.url +
+                                '/' +
+                                'default_images/img-icon.svg'
+                            }
                         />
                     )
             }

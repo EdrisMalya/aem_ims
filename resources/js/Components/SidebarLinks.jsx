@@ -6,6 +6,7 @@ import ProtectedComponent from '@/Components/ProtectedComponent'
 import { usePage } from '@inertiajs/inertia-react'
 import useLanguage from '@/hooks/useLanguage'
 import CategoryIcon from '@mui/icons-material/Category'
+import ViewColumnIcon from '@mui/icons-material/ViewColumn'
 
 const SidebarLinks = ({ active }) => {
     const { lang, dir } = usePage().props
@@ -37,9 +38,7 @@ const SidebarLinks = ({ active }) => {
                     active={active === 'user_management'}
                 />
             </ProtectedComponent>
-
             {/*Other links*/}
-
             <ProtectedComponent role={'configuration-access'}>
                 <SidebarLinkButton
                     dir={dir}
