@@ -5,6 +5,8 @@ import { Button } from '@mui/material'
 import CategoryIcon from '@mui/icons-material/Category'
 import StraightenIcon from '@mui/icons-material/Straighten'
 import StoreIcon from '@mui/icons-material/Store'
+import ClearAllIcon from '@mui/icons-material/ClearAll'
+import QrCode2Icon from '@mui/icons-material/QrCode2'
 
 const ProductManagementLinks = ({ translate }) => {
     const { active, lang } = usePage().props
@@ -19,6 +21,8 @@ const ProductManagementLinks = ({ translate }) => {
                 return 'product-categories'
             case 'brands':
                 return 'brands'
+            case 'print-barcode':
+                return 'print-barcode'
         }
     }
 
@@ -40,7 +44,7 @@ const ProductManagementLinks = ({ translate }) => {
             <ProtectedComponent role={'product-categories-access'}>
                 <Link href={route('productcategory.index', { lang })}>
                     <Button
-                        endIcon={<StoreIcon fontSize={'small'} />}
+                        endIcon={<ClearAllIcon fontSize={'small'} />}
                         variant={
                             activeLink() === 'product-categories'
                                 ? 'contained'
@@ -71,6 +75,19 @@ const ProductManagementLinks = ({ translate }) => {
                                 : 'outlined'
                         }>
                         {translate('Base units')}
+                    </Button>
+                </Link>
+            </ProtectedComponent>
+            <ProtectedComponent role={'print-barcode-access'}>
+                <Link href={route('barcode-printer.index', { lang })}>
+                    <Button
+                        endIcon={<QrCode2Icon fontSize={'small'} />}
+                        variant={
+                            activeLink() === 'print-barcode'
+                                ? 'contained'
+                                : 'outlined'
+                        }>
+                        {translate('Print barcode')}
                     </Button>
                 </Link>
             </ProtectedComponent>

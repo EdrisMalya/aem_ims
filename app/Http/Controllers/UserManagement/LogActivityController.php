@@ -6,6 +6,7 @@ use App\Helpers\DatatableBuilder;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Spatie\Activitylog\Models\Activity;
 
@@ -32,6 +33,20 @@ class LogActivityController extends Controller
             'filtered_users' => $selected_users,
             'filter_date' => $request->get('date')
         ]);
+    }
+
+    public function restore(Request $request){
+        $model = $request->get('data')['subject_type'];
+        $deleted_data = $request->get('data')['properties']['old'];
+        unset($deleted_data['created_at']);
+        unset($deleted_data['updated_at']);
+        try {
+            $model::create($deleted_data);
+        }catch (\Exception $exception){
+            Log::error($exception);
+            return back()->with(['message' => translate('This record is already restored'), 'type' => 'error']);
+        }
+        return back()->with(['message' => translate('Restore successfully'), 'type' => 'success']);
     }
 
     public function deleteLogActivity($lang, Activity $activity){

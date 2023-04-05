@@ -12,13 +12,34 @@ import LogUpdateEvent from '@/Pages/UserManagement/Users/Components/LogUpdateEve
 import LogCreatedEvent from '@/Pages/UserManagement/Users/Components/LogCreatedEvent'
 import { useRecoilState } from 'recoil'
 import { directionAtom } from '@/atoms/directionAtom'
+import RestoreIcon from '@mui/icons-material/Restore'
+import swal from 'sweetalert'
+import { LoadingButton } from '@mui/lab'
+import { useForm, usePage } from '@inertiajs/inertia-react'
 
 const ActivityDetails = ({ onClose, translate, data }) => {
     const [open, setOpen] = useState(true)
+    const { lang } = usePage().props
+
+    const { post, processing } = useForm({
+        data: data,
+    })
 
     const handleClose = () => {
         setOpen(false)
         onClose()
+    }
+
+    const handleRestore = () => {
+        swal({
+            icon: 'info',
+            title: translate('Are you sure'),
+            buttons: true,
+        }).then(res => {
+            if (res) {
+                post(route('restore.log', { lang }))
+            }
+        })
     }
 
     const [dir] = useRecoilState(directionAtom)
@@ -92,6 +113,15 @@ const ActivityDetails = ({ onClose, translate, data }) => {
                 <Button color={'error'} onClick={handleClose}>
                     {translate('Close')}
                 </Button>
+                {data?.event === 'deleted' && (
+                    <LoadingButton
+                        loading={processing}
+                        color={'success'}
+                        endIcon={<RestoreIcon />}
+                        onClick={handleRestore}>
+                        {translate('Restore')}
+                    </LoadingButton>
+                )}
             </DialogActions>
         </Dialog>
     )

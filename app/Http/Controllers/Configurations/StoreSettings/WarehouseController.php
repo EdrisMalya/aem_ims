@@ -22,7 +22,6 @@ class WarehouseController extends Controller
         return Inertia::render('Warehouse/WarehouseIndex',[
             'warehouses' => WarehouseResource::collection($datatable->build()),
             'active_module' => 'warehouse',
-            'provinces' => Inertia::lazy(fn () => Province::query()->get()),
             'active' => 'store-settings'
         ]);
     }

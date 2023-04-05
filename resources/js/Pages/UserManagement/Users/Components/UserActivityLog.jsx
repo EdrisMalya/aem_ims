@@ -74,6 +74,7 @@ const UserActivityLog = ({ logs, translate, user, active_tab, lang }) => {
             </div>
             {activityDetails && (
                 <ActivityDetails
+                    lang={lang}
                     translate={translate}
                     data={activity}
                     onClose={() => {

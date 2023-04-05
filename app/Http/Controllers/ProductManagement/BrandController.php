@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ProductManagement;
 
 use App\Helpers\DatatableBuilder;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HelperController;
 use App\Http\Requests\BrandRequest;
 use App\Http\Resources\BrandResource;
 use App\Models\Brand;
@@ -62,6 +63,9 @@ class BrandController extends Controller
         $this->allowed('brand-delete-brand');
         try {
             $brand = Brand::query()->findOrFail(decrypt($brand));
+            if($brand->products->count()){
+                return back()->with(['message' => translate('Cannot be deleted'), 'type' => 'error']);
+            }
             if($brand->image){
                 HelperController::removeFile($brand->image, 'url');
             }

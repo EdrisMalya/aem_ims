@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ProductManagement;
 
 use App\Helpers\DatatableBuilder;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HelperController;
 use App\Http\Requests\ProductcategoryRequest;
 use App\Http\Resources\ProductcategoryResource;
 use App\Models\Productcategory;
@@ -57,10 +58,15 @@ class ProductcategoryController extends Controller
         $this->allowed('product-categories-delete-category');
         try {
             $productcategory = Productcategory::query()->findOrFail(decrypt($productcategory));
-            if($productcategory->logo){
-                HelperController::removeFile($productcategory->logo, 'url');
+            $count = $productcategory->products->count();
+            if($count > 1){
+                return back()->with(['message' => translate("Cannot be deleted because {$count} products is belongs to it"), 'type' => 'error']);
+            }else{
+                if($productcategory->logo){
+                    HelperController::removeFile($productcategory->logo, 'url');
+                }
+                $productcategory->delete();
             }
-            $productcategory->delete();
             return back()->with(['message' => translate('Deleted successfully'), 'type' => 'success']);
         }
         catch (\Exception $exception){
@@ -68,5 +74,4 @@ class ProductcategoryController extends Controller
             abort(404);
         }
     }
-
 }

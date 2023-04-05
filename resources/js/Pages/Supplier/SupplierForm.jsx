@@ -16,7 +16,8 @@ import ImageSelector from '@/Components/ImageSelector'
 import { Inertia } from '@inertiajs/inertia'
 import Select2 from '@/Components/Select2'
 
-const SupplierForm = ({ translate, onClose, supplier, provinces }) => {
+const SupplierForm = ({ translate, onClose, supplier, defaultValue = '' }) => {
+    const [provinces, setProvinces] = React.useState(undefined)
     const { lang } = usePage().props
 
     const handleClose = () => {
@@ -24,7 +25,7 @@ const SupplierForm = ({ translate, onClose, supplier, provinces }) => {
     }
 
     const { post, processing, setData, data, errors, put } = useForm({
-        name: supplier?.name,
+        name: supplier ? supplier.name : defaultValue,
         email: supplier?.email,
         phone_number: supplier?.phone_number,
         province_id: supplier
@@ -66,9 +67,9 @@ const SupplierForm = ({ translate, onClose, supplier, provinces }) => {
 
     React.useEffect(() => {
         if (typeof provinces === 'undefined') {
-            Inertia.reload({
-                only: ['provinces'],
-            })
+            axios
+                .get(route('partial', { type: 'get_provinces', lang }))
+                .then(res => setProvinces(res.data))
         }
     }, [provinces])
 

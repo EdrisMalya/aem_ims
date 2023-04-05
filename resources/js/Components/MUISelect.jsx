@@ -11,6 +11,7 @@ const MuiSelect = ({
     onChange,
     error = '',
     name = '',
+    disabled = false,
 }) => {
     const [selectValue, setSelectValue] = useState(value)
 
@@ -24,6 +25,7 @@ const MuiSelect = ({
             error={error !== ''}
             className={className}
             fullWidth={fullWidth}
+            disabled={disabled}
             size={size}>
             <InputLabel id="demo-simple-select-label">{label}</InputLabel>
             <Select

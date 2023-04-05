@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import Chip from '@mui/material/Chip'
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
 import {
     Avatar,
     CircularProgress,
@@ -32,6 +32,8 @@ const Select2 = ({
     selectAllOption = false,
     data,
     required = false,
+    onCreated,
+    disabled = false,
 }) => {
     const resolve = (path, obj) => {
         return path.split('.').reduce(function (prev, curr) {
@@ -46,6 +48,7 @@ const Select2 = ({
     )
     const [selectAll, setSelectAll] = React.useState(false)
     const [allOptions, setAllOptions] = React.useState(false)
+    const filter = createFilterOptions()
 
     const { translate } = useLanguage()
 
@@ -167,15 +170,38 @@ const Select2 = ({
                         selectedValue?.length > 50 &&
                         checkBox()}
                     <Autocomplete
+                        disabled={disabled}
                         multiple={isMulti}
                         id="tags-outlined"
-                        autoComplete={'off'}
+                        autoComplete={false}
                         options={options}
                         getOptionLabel={option => option.label}
                         value={selectedValue}
                         placeholder={placeholder}
                         size={size}
                         filterSelectedOptions
+                        freeSolo
+                        filterOptions={(options, params) => {
+                            const filtered = filter(options, params)
+                            const { inputValue } = params
+                            // Suggest the creation of a new value
+                            const isExisting = options.some(
+                                option => inputValue === option.title,
+                            )
+                            if (
+                                inputValue !== '' &&
+                                !isExisting &&
+                                typeof onCreated !== 'undefined'
+                            ) {
+                                filtered.push({
+                                    value: inputValue,
+                                    label: `Add "${inputValue}"`,
+                                    forForm: true,
+                                })
+                            }
+
+                            return filtered
+                        }}
                         renderTags={(tagValue, getTagProps) =>
                             tagValue.map((option, index) => (
                                 <Chip
@@ -183,14 +209,7 @@ const Select2 = ({
                                     key={index}
                                     avatar={
                                         selectedImage !== '' ? (
-                                            <Avatar
-                                                src={
-                                                    process.env
-                                                        .NEXT_PUBLIC_BACKEND_URL2 +
-                                                    '/storage/' +
-                                                    option?.image
-                                                }
-                                            />
+                                            <Avatar src={option?.image} />
                                         ) : (
                                             <></>
                                         )
@@ -203,6 +222,10 @@ const Select2 = ({
                         onChange={(event, newValue) => {
                             onChange(newValue)
                             setSelectedValue(newValue)
+                            if (typeof onCreated !== 'undefined') {
+                                if (newValue?.value && newValue?.forForm)
+                                    onCreated(newValue?.value)
+                            }
                         }}
                         renderInput={params => (
                             <TextField

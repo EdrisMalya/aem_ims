@@ -108,6 +108,16 @@ const Datatable = ({
                 datatableRoute={datatableRoute}
                 translate={translate}
             />
+            <br />
+            <DatatableActions
+                translate={translate}
+                columns={columns}
+                data={data}
+                dispatch={dispatch}
+                actions={actions}
+                showNumber={showNumber}
+                tableData={tableData}
+            />
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg dark:scrollbar-thumb-gray-900">
                 {tableLoading && (
                     <div
@@ -121,54 +131,43 @@ const Datatable = ({
                         />
                     </div>
                 )}
-                <div className={'mt-5'}>
-                    <DatatableActions
-                        translate={translate}
+                <table
+                    id={'table-to-xls'}
+                    className={`w-full text-sm ${
+                        direction === 'ltr' ? 'text-left' : 'text-right'
+                    } text-gray-500 dark:text-gray-400`}>
+                    <TableHead
+                        lang={lang}
+                        showNumber={showNumber}
                         columns={columns}
+                        actions={actions}
                         data={data}
                         dispatch={dispatch}
+                        setTableLoading={setTableLoading}
+                        datatableRoute={datatableRoute}
+                        translate={translate}
+                        shouldIShowTheColumn={shouldIShowTheColumn}
+                    />
+                    <TableBody
+                        handleEditAction={handleEditAction}
                         actions={actions}
                         showNumber={showNumber}
-                        tableData={tableData}
+                        columns={columns}
+                        editAction={editAction}
+                        deleteAction={deleteAction}
+                        data={tableData}
+                        setTableLoading={setTableLoading}
+                        deleteRole={deleteRole}
+                        editRole={editRole}
+                        otherActions={otherOptions}
+                        datatableRoute={datatableRoute}
+                        objectName={objectName}
+                        lang={lang}
+                        deleteRoute={deleteRoute}
+                        translate={translate}
+                        shouldIShowTheColumn={shouldIShowTheColumn}
                     />
-                    <table
-                        id={'table-to-xls'}
-                        className={`w-full text-sm ${
-                            direction === 'ltr' ? 'text-left' : 'text-right'
-                        } text-gray-500 dark:text-gray-400`}>
-                        <TableHead
-                            lang={lang}
-                            showNumber={showNumber}
-                            columns={columns}
-                            actions={actions}
-                            data={data}
-                            dispatch={dispatch}
-                            setTableLoading={setTableLoading}
-                            datatableRoute={datatableRoute}
-                            translate={translate}
-                            shouldIShowTheColumn={shouldIShowTheColumn}
-                        />
-                        <TableBody
-                            handleEditAction={handleEditAction}
-                            actions={actions}
-                            showNumber={showNumber}
-                            columns={columns}
-                            editAction={editAction}
-                            deleteAction={deleteAction}
-                            data={tableData}
-                            setTableLoading={setTableLoading}
-                            deleteRole={deleteRole}
-                            editRole={editRole}
-                            otherActions={otherOptions}
-                            datatableRoute={datatableRoute}
-                            objectName={objectName}
-                            lang={lang}
-                            deleteRoute={deleteRoute}
-                            translate={translate}
-                            shouldIShowTheColumn={shouldIShowTheColumn}
-                        />
-                    </table>
-                </div>
+                </table>
             </div>
             <div className={'mt-4'}>
                 <div className={'flex items-center justify-between'}>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconButton } from '@mui/material'
 import { TrashIcon } from '@heroicons/react/24/solid'
+import { Container, Draggable } from 'react-smooth-dnd'
 
 const PermissionList = ({ permissions, deletePermission }) => {
     const copy = text => {

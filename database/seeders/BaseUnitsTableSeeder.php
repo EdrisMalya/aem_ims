@@ -23,8 +23,8 @@ class BaseUnitsTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'name' => 'Kilogram',
-                'created_at' => '2023-02-18 17:53:24',
-                'updated_at' => '2023-02-18 17:53:24',
+                'created_at' => '2023-03-23 20:16:07',
+                'updated_at' => '2023-03-23 20:16:07',
             ),
             1 => 
             array (
@@ -39,6 +39,48 @@ class BaseUnitsTableSeeder extends Seeder
                 'name' => 'Meter',
                 'created_at' => '2023-02-18 17:53:33',
                 'updated_at' => '2023-02-18 17:53:33',
+            ),
+            3 => 
+            array (
+                'id' => 8,
+                'name' => 'بالون 10 کیلویی',
+                'created_at' => '2023-02-20 17:42:15',
+                'updated_at' => '2023-02-20 17:42:15',
+            ),
+            4 => 
+            array (
+                'id' => 9,
+                'name' => 'بالون 20 کیلویی',
+                'created_at' => '2023-02-20 17:42:25',
+                'updated_at' => '2023-02-20 17:42:25',
+            ),
+            5 => 
+            array (
+                'id' => 10,
+                'name' => 'Test',
+                'created_at' => '2023-04-01 13:10:07',
+                'updated_at' => '2023-04-01 13:10:07',
+            ),
+            6 => 
+            array (
+                'id' => 11,
+                'name' => 'Single',
+                'created_at' => '2023-03-18 14:27:10',
+                'updated_at' => '2023-03-18 14:27:10',
+            ),
+            7 => 
+            array (
+                'id' => 12,
+                'name' => 'can',
+                'created_at' => '2023-03-20 17:42:31',
+                'updated_at' => '2023-03-20 17:42:31',
+            ),
+            8 => 
+            array (
+                'id' => 13,
+                'name' => 'kartan',
+                'created_at' => '2023-03-20 17:42:50',
+                'updated_at' => '2023-03-20 17:42:50',
             ),
         ));
         

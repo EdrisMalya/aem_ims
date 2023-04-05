@@ -14,7 +14,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import ImageSelector from '@/Components/ImageSelector'
 
-const BaseunitForm = ({ translate, onClose, baseunit }) => {
+const BaseunitForm = ({ translate, onClose, baseunit, defaultValue }) => {
     const { lang } = usePage().props
 
     const handleClose = () => {
@@ -22,7 +22,7 @@ const BaseunitForm = ({ translate, onClose, baseunit }) => {
     }
 
     const { post, processing, setData, data, errors, put } = useForm({
-        name: baseunit?.name
+        name: baseunit ? baseunit?.name : defaultValue,
     })
 
     const handleChange = event => {

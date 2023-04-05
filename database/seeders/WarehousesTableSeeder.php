@@ -31,6 +31,18 @@ class WarehousesTableSeeder extends Seeder
                 'created_at' => '2023-02-14 17:32:38',
                 'updated_at' => '2023-02-14 18:36:26',
             ),
+            1 => 
+            array (
+                'id' => 3,
+                'name' => 'Taimany warehouse',
+                'email' => 'test@gmail.com',
+                'phone_number' => '072123211',
+                'address' => 'Afghanistan taimany',
+                'province_id' => 13,
+                'status' => 1,
+                'created_at' => '2023-03-28 17:30:12',
+                'updated_at' => '2023-03-28 17:30:12',
+            ),
         ));
         
         

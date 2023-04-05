@@ -26,6 +26,20 @@ class RoleGroupsTableSeeder extends Seeder
                 'created_at' => '2022-12-11 06:07:05',
                 'updated_at' => '2022-12-11 06:07:05',
             ),
+            1 => 
+            array (
+                'id' => 2,
+                'name' => 'Sales',
+                'created_at' => '2023-02-22 16:56:24',
+                'updated_at' => '2023-02-22 16:56:24',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Purhcase',
+                'created_at' => '2023-02-22 16:56:29',
+                'updated_at' => '2023-02-22 16:56:29',
+            ),
         ));
         
         

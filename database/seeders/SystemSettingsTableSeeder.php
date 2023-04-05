@@ -26,13 +26,13 @@ class SystemSettingsTableSeeder extends Seeder
                 'name' => 'Karimi update',
                 'address' => 'Parwan 2',
                 'phone_number' => '0799210807',
-                'currency_id' => 3,
+                'currency_id' => 2,
                 'province_id' => 13,
                 'warehouse_id' => 2,
                 'customer_id' => 2,
                 'date_format' => 'Y-m-d',
                 'created_at' => '2023-02-14 19:35:18',
-                'updated_at' => '2023-02-18 17:17:16',
+                'updated_at' => '2023-04-02 22:41:31',
             ),
         ));
         

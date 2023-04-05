@@ -23,7 +23,7 @@ class CRUDCommand extends Command
         if($with_image && $with_image == 'Y'){
             $has_image = true;
         }
-        $model_name = ucfirst(strtolower($this->argument('model')));
+        $model_name = Str::studly($this->argument('model'));
         $model_table_name = strtolower(Str::plural($model_name));
         $web_routes_file = base_path('routes/web.php');
         $sidebar_links = base_path('resources/js/Components/SidebarLinks.jsx');

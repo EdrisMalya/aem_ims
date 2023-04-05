@@ -6,6 +6,7 @@ import ProtectedComponent from '@/Components/ProtectedComponent'
 import { usePage } from '@inertiajs/inertia-react'
 import useLanguage from '@/hooks/useLanguage'
 import CategoryIcon from '@mui/icons-material/Category'
+import LocalMallIcon from '@mui/icons-material/LocalMall'
 import ViewColumnIcon from '@mui/icons-material/ViewColumn'
 
 const SidebarLinks = ({ active }) => {
@@ -25,8 +26,17 @@ const SidebarLinks = ({ active }) => {
                     dir={dir}
                     icon={<CategoryIcon className={'h-5'} />}
                     url={route('products-management.index', { lang })}
-                    label={translate('Products management')}
+                    label={translate('Products Management')}
                     active={active === 'product-management'}
+                />
+            </ProtectedComponent>
+            <ProtectedComponent role={'purchase-access'}>
+                <SidebarLinkButton
+                    dir={dir}
+                    icon={<LocalMallIcon fontSize={'small'} />}
+                    url={route('purchase.index', { lang })}
+                    label={translate('Purchase management')}
+                    active={active === 'purchase-management'}
                 />
             </ProtectedComponent>
             <ProtectedComponent role={'user-management-access'}>
@@ -34,11 +44,13 @@ const SidebarLinks = ({ active }) => {
                     dir={dir}
                     icon={<UsersIcon className={'h-5'} />}
                     url={route('user-management.index', { lang })}
-                    label={translate('User management')}
+                    label={translate('User Management')}
                     active={active === 'user_management'}
                 />
             </ProtectedComponent>
+
             {/*Other links*/}
+
             <ProtectedComponent role={'configuration-access'}>
                 <SidebarLinkButton
                     dir={dir}

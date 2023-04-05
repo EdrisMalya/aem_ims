@@ -149,7 +149,7 @@ const PermissionIndex = ({ auth, active, permissions, lang }) => {
                     </Container>
                 ) : (
                     <p className={'text-center text-red-500 mt-12'}>
-                        No record found
+                        {translate('No record found')}
                     </p>
                 )}
             </div>

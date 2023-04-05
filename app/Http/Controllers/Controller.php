@@ -14,4 +14,12 @@ class Controller extends BaseController
     public function allowed($permission, $abort=true){
         auth()->user()->isAllowed($permission, $abort);
     }
+    public function findId($value){
+        try{
+            return decrypt($value);
+        }catch (\Exception $exception){
+            \Log::error($exception);
+            abort(404);
+        }
+    }
 }

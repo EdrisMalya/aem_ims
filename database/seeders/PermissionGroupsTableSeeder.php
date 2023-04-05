@@ -24,9 +24,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'id' => 1,
                 'permission_group_id' => 0,
                 'name' => 'User management',
-                'sort' => 0,
+                'sort' => 3,
                 'created_at' => '2022-12-11 06:04:50',
-                'updated_at' => '2023-02-13 18:21:50',
+                'updated_at' => '2023-03-25 21:03:35',
             ),
             1 => 
             array (
@@ -195,9 +195,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'id' => 60,
                 'permission_group_id' => 0,
                 'name' => 'Products management',
-                'sort' => 1,
+                'sort' => 0,
                 'created_at' => '2023-02-14 20:54:22',
-                'updated_at' => '2023-02-14 21:07:55',
+                'updated_at' => '2023-03-20 17:20:12',
             ),
             20 => 
             array (
@@ -243,6 +243,51 @@ class PermissionGroupsTableSeeder extends Seeder
                 'sort' => 2,
                 'created_at' => '2023-02-20 11:57:51',
                 'updated_at' => '2023-02-20 11:57:55',
+            ),
+            25 => 
+            array (
+                'id' => 70,
+                'permission_group_id' => 60,
+                'name' => 'Print barcode',
+                'sort' => 4,
+                'created_at' => '2023-03-23 20:21:22',
+                'updated_at' => '2023-03-23 20:21:22',
+            ),
+            26 => 
+            array (
+                'id' => 71,
+                'permission_group_id' => 0,
+                'name' => 'Purchases managment',
+                'sort' => 1,
+                'created_at' => '2023-03-25 21:03:11',
+                'updated_at' => '2023-03-25 21:21:40',
+            ),
+            27 => 
+            array (
+                'id' => 72,
+                'permission_group_id' => 71,
+                'name' => 'Purchase',
+                'sort' => 0,
+                'created_at' => '2023-03-25 21:21:48',
+                'updated_at' => '2023-03-25 21:37:22',
+            ),
+            28 => 
+            array (
+                'id' => 73,
+                'permission_group_id' => 71,
+                'name' => 'Purchase return',
+                'sort' => 1,
+                'created_at' => '2023-03-25 21:21:57',
+                'updated_at' => '2023-03-25 21:21:57',
+            ),
+            29 => 
+            array (
+                'id' => 75,
+                'permission_group_id' => 53,
+                'name' => 'Payment Types',
+                'sort' => 2,
+                'created_at' => '2023-04-03 19:27:10',
+                'updated_at' => '2023-04-03 19:27:10',
             ),
         ));
         

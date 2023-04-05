@@ -1,10 +1,18 @@
 import React from 'react'
-import { IconButton, Tooltip } from '@mui/material'
+import {
+    IconButton,
+    ListItemIcon,
+    Menu,
+    MenuItem,
+    Tooltip,
+} from '@mui/material'
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
 import dayjs from 'dayjs'
 import swal from 'sweetalert'
-import { useForm } from '@inertiajs/inertia-react'
+import { useForm, usePage } from '@inertiajs/inertia-react'
 import ProtectedComponent from '@/Components/ProtectedComponent'
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
+import { Logout, PersonAdd, Settings } from '@mui/icons-material'
 
 const TableBody = ({
     showNumber,
@@ -25,6 +33,8 @@ const TableBody = ({
     shouldIShowTheColumn,
 }) => {
     let counter = 1
+    const [flashId, setFlashId] = React.useState(0)
+    const { flash, flash_column } = usePage().props
     const resolve = (path, obj) => {
         return path.split('.').reduce(function (prev, curr) {
             return prev ? prev[curr] : null
@@ -60,6 +70,8 @@ const TableBody = ({
                             ? 'Inactive'
                             : column?.false_value
                     return resolve(column.key, item) ? trueValue : falseValue
+                case 'price':
+                    return Math.abs(resolve(column.key, item)).toLocaleString()
                 case 'image':
                     return resolve(column.key, item) ? (
                         <img
@@ -119,6 +131,18 @@ const TableBody = ({
         })
     }
 
+    React.useEffect(() => {
+        if (flash.flash_id) {
+            setFlashId(flash.flash_id)
+            const timeout = setTimeout(() => {
+                setFlashId(0)
+            }, 3000)
+            return () => {
+                clearTimeout(timeout)
+            }
+        }
+    }, [flash])
+
     return (
         <tbody>
             {data?.data?.length < 1 ? (
@@ -133,7 +157,13 @@ const TableBody = ({
                 data?.data?.map((item, index) => (
                     <tr
                         key={index}
-                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${
+                            flash.flash_column !== null &&
+                            flash.flash_id !== null &&
+                            flashId === resolve(flash.flash_column, item) &&
+                            '!bg-green-500 !text-white'
+                        }`}>
+                        {/*!bg-green-500 !text-white*/}
                         {showNumber && shouldIShowTheColumn('increment') && (
                             <th scope="col" className="py-2 px-6 font-bold">
                                 <div className="flex items-center">
@@ -146,13 +176,16 @@ const TableBody = ({
                                 shouldIShowTheColumn(column.key) && (
                                     <td
                                         key={column?.key}
-                                        className="py-2 px-6 text-xs">
-                                        {tdDataBuilder(column, item)}
+                                        className={`py-2 px-6 text-xs `}>
+                                        <span
+                                            className={`${column?.className}`}>
+                                            {tdDataBuilder(column, item)}
+                                        </span>
                                     </td>
                                 ),
                         )}
                         {actions && shouldIShowTheColumn('actions') && (
-                            <td className="py-2 px-6 text-xs">
+                            <td className="py-2 px-6 text-xs whitespace-nowrap">
                                 {editAction && (
                                     <ProtectedComponent role={editRole}>
                                         <IconButton
@@ -161,7 +194,7 @@ const TableBody = ({
                                             }
                                             color={'warning'}
                                             size={'small'}>
-                                            <PencilIcon className={'h-3'} />
+                                            <PencilIcon className={'h-4'} />
                                         </IconButton>
                                     </ProtectedComponent>
                                 )}
@@ -173,7 +206,7 @@ const TableBody = ({
                                             }
                                             color={'error'}
                                             size={'small'}>
-                                            <TrashIcon className={'h-3'} />
+                                            <TrashIcon className={'h-4'} />
                                         </IconButton>
                                     </ProtectedComponent>
                                 )}
@@ -181,16 +214,76 @@ const TableBody = ({
                                     <ProtectedComponent
                                         key={index}
                                         role={action?.role}>
-                                        <Tooltip title={action?.tooltip}>
-                                            <IconButton
-                                                className={action?.className}
-                                                size={'small'}
-                                                onClick={() =>
-                                                    action?.handleClick(item)
-                                                }>
-                                                {action?.icon}
-                                            </IconButton>
-                                        </Tooltip>
+                                        <PopupState
+                                            variant="popover"
+                                            popupId={`demo-popup-menu-${index}`}
+                                            disableAutoFocus>
+                                            {popupState => (
+                                                <React.Fragment>
+                                                    <Tooltip
+                                                        title={action?.tooltip}>
+                                                        {action?.menu ? (
+                                                            <IconButton
+                                                                className={
+                                                                    action?.className
+                                                                }
+                                                                size={'small'}
+                                                                {...bindTrigger(
+                                                                    popupState,
+                                                                )}>
+                                                                {action?.icon}
+                                                            </IconButton>
+                                                        ) : (
+                                                            <IconButton
+                                                                className={
+                                                                    action?.className
+                                                                }
+                                                                size={'small'}
+                                                                onClick={() =>
+                                                                    action?.handleClick(
+                                                                        item,
+                                                                    )
+                                                                }>
+                                                                {action?.icon}
+                                                            </IconButton>
+                                                        )}
+                                                    </Tooltip>
+                                                    {action?.menu && (
+                                                        <Menu
+                                                            {...bindMenu(
+                                                                popupState,
+                                                            )}>
+                                                            {action.menu?.map(
+                                                                (
+                                                                    menu,
+                                                                    index,
+                                                                ) => (
+                                                                    <MenuItem
+                                                                        onClick={() => {
+                                                                            popupState.close()
+                                                                            menu?.onClick(
+                                                                                item,
+                                                                            )
+                                                                        }}
+                                                                        key={
+                                                                            index
+                                                                        }>
+                                                                        <ListItemIcon>
+                                                                            {
+                                                                                menu.icon
+                                                                            }
+                                                                        </ListItemIcon>
+                                                                        {
+                                                                            menu.label
+                                                                        }
+                                                                    </MenuItem>
+                                                                ),
+                                                            )}
+                                                        </Menu>
+                                                    )}
+                                                </React.Fragment>
+                                            )}
+                                        </PopupState>
                                     </ProtectedComponent>
                                 ))}
                             </td>

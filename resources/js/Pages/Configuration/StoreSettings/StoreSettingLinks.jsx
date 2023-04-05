@@ -7,6 +7,7 @@ import ProtectedComponent from '@/Components/ProtectedComponent'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import { Link } from '@inertiajs/inertia-react'
 import StorefrontIcon from '@mui/icons-material/Storefront'
+import PaymentIcon from '@mui/icons-material/Payment'
 
 const StoreSettingLinks = ({ active, lang }) => {
     const { translate } = useLanguage()
@@ -42,6 +43,18 @@ const StoreSettingLinks = ({ active, lang }) => {
                             active === 'warehouse' ? 'contained' : 'outlined'
                         }>
                         {translate('Warehouse')}
+                    </Button>
+                </Link>
+            </ProtectedComponent>
+            <ProtectedComponent role={'payment-types-access'}>
+                <Link href={route('payment-type.index', { lang })}>
+                    <Button
+                        startIcon={<PaymentIcon />}
+                        n
+                        variant={
+                            active === 'payment-type' ? 'contained' : 'outlined'
+                        }>
+                        {translate('Payment types')}
                     </Button>
                 </Link>
             </ProtectedComponent>

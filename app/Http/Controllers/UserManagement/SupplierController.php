@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UserManagement;
 
 use App\Helpers\DatatableBuilder;
 use App\Http\Controllers\Controller;

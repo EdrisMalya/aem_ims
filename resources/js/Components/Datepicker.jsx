@@ -13,12 +13,16 @@ export default function BasicDatePicker({
     format = 'YYYY/MM/DD',
     size = 'small',
     returnFormat = null,
+    fullWidth = true,
+    disabled = false,
 }) {
     const [dateValue, setDateValue] = React.useState(value)
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+                disabled={disabled}
+                fullWidth={fullWidth}
                 className={'w-full lg:w-auto'}
                 label={label}
                 value={dateValue}
@@ -31,7 +35,9 @@ export default function BasicDatePicker({
                         ),
                     )
                 }}
-                renderInput={params => <TextField size={size} {...params} />}
+                renderInput={params => (
+                    <TextField fullWidth={fullWidth} size={size} {...params} />
+                )}
             />
         </LocalizationProvider>
     )

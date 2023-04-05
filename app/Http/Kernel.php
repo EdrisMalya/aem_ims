@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckForDeveloperAccountMiddleware;
 use App\Http\Middleware\CheckUserStatusAndPasswordChangeMiddleware;
 use App\Http\Middleware\LanguageMiddleware;
 use App\Http\Middleware\PublicWebsiteMiddleware;
@@ -70,6 +71,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check_user' => CheckUserStatusAndPasswordChangeMiddleware::class,
         'lang' => LanguageMiddleware::class,
-        'public_website' => PublicWebsiteMiddleware::class
+        'public_website' => PublicWebsiteMiddleware::class,
+        'is_developer' => CheckForDeveloperAccountMiddleware::class
     ];
 }

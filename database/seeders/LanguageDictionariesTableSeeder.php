@@ -1172,6 +1172,42 @@ sidebar',
                 'created_at' => '2022-12-24 14:00:19',
                 'updated_at' => '2022-12-24 14:00:19',
             ),
+            128 => 
+            array (
+                'id' => 139,
+                'language_id' => 1,
+                'word' => 'Add new record',
+                'translate' => 'اضافه نمودن دیتای جدید',
+                'created_at' => '2023-02-20 17:18:31',
+                'updated_at' => '2023-02-20 17:18:31',
+            ),
+            129 => 
+            array (
+                'id' => 140,
+                'language_id' => 1,
+                'word' => 'products management',
+                'translate' => 'مدریت محصولات',
+                'created_at' => '2023-02-22 17:04:17',
+                'updated_at' => '2023-02-22 17:04:17',
+            ),
+            130 => 
+            array (
+                'id' => 141,
+                'language_id' => 1,
+                'word' => 'due amount',
+                'translate' => 'مقدار باقی مانده',
+                'created_at' => '2023-04-03 20:31:30',
+                'updated_at' => '2023-04-03 20:31:30',
+            ),
+            131 => 
+            array (
+                'id' => 142,
+                'language_id' => 1,
+                'word' => 'Purchase management',
+                'translate' => 'مدریت خریداری',
+                'created_at' => '2023-04-03 20:32:34',
+                'updated_at' => '2023-04-03 20:32:34',
+            ),
         ));
         
         

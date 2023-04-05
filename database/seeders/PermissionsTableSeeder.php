@@ -631,6 +631,123 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2023-02-20 13:02:32',
                 'updated_at' => '2023-02-20 13:02:32',
             ),
+            68 => 
+            array (
+                'id' => 134,
+                'permission_group_id' => 61,
+                'name' => 'View product details',
+                'key' => 'product-view-product-details',
+                'created_at' => '2023-03-20 17:19:04',
+                'updated_at' => '2023-03-20 17:19:04',
+            ),
+            69 => 
+            array (
+                'id' => 135,
+                'permission_group_id' => 61,
+                'name' => 'Edit product',
+                'key' => 'product-edit-product',
+                'created_at' => '2023-03-20 17:19:10',
+                'updated_at' => '2023-03-20 17:19:10',
+            ),
+            70 => 
+            array (
+                'id' => 136,
+                'permission_group_id' => 61,
+                'name' => 'Delete product',
+                'key' => 'product-delete-product',
+                'created_at' => '2023-03-20 17:19:16',
+                'updated_at' => '2023-03-20 17:19:16',
+            ),
+            71 => 
+            array (
+                'id' => 137,
+                'permission_group_id' => 70,
+                'name' => 'Access',
+                'key' => 'print-barcode-access',
+                'created_at' => '2023-03-23 20:21:27',
+                'updated_at' => '2023-03-23 20:21:27',
+            ),
+            72 => 
+            array (
+                'id' => 142,
+                'permission_group_id' => 73,
+                'name' => 'Access',
+                'key' => 'purchase-return-access',
+                'created_at' => '2023-03-25 21:32:46',
+                'updated_at' => '2023-03-25 21:32:46',
+            ),
+            73 => 
+            array (
+                'id' => 143,
+                'permission_group_id' => 72,
+                'name' => 'Access',
+                'key' => 'purchase-access',
+                'created_at' => '2023-03-25 21:37:29',
+                'updated_at' => '2023-03-25 21:37:29',
+            ),
+            74 => 
+            array (
+                'id' => 144,
+                'permission_group_id' => 72,
+                'name' => 'Create purchase',
+                'key' => 'purchase-create-purchase',
+                'created_at' => '2023-03-26 17:27:27',
+                'updated_at' => '2023-03-26 17:27:27',
+            ),
+            75 => 
+            array (
+                'id' => 145,
+                'permission_group_id' => 72,
+                'name' => 'View details',
+                'key' => 'purchase-view-details',
+                'created_at' => '2023-03-31 20:36:21',
+                'updated_at' => '2023-03-31 20:36:21',
+            ),
+            76 => 
+            array (
+                'id' => 150,
+                'permission_group_id' => 75,
+                'name' => 'Access',
+                'key' => 'payment-types-access',
+                'created_at' => '2023-04-03 19:27:17',
+                'updated_at' => '2023-04-03 19:27:17',
+            ),
+            77 => 
+            array (
+                'id' => 151,
+                'permission_group_id' => 75,
+                'name' => 'Create',
+                'key' => 'payment-types-create',
+                'created_at' => '2023-04-03 19:28:04',
+                'updated_at' => '2023-04-03 19:28:04',
+            ),
+            78 => 
+            array (
+                'id' => 152,
+                'permission_group_id' => 75,
+                'name' => 'Edit',
+                'key' => 'payment-types-edit',
+                'created_at' => '2023-04-03 19:28:11',
+                'updated_at' => '2023-04-03 19:28:11',
+            ),
+            79 => 
+            array (
+                'id' => 153,
+                'permission_group_id' => 75,
+                'name' => 'Delete',
+                'key' => 'payment-types-delete',
+                'created_at' => '2023-04-03 19:28:14',
+                'updated_at' => '2023-04-03 19:28:14',
+            ),
+            80 => 
+            array (
+                'id' => 154,
+                'permission_group_id' => 73,
+                'name' => 'Create purchase return',
+                'key' => 'purchase-return-create-purchase-return',
+                'created_at' => '2023-04-04 19:17:05',
+                'updated_at' => '2023-04-04 19:17:05',
+            ),
         ));
         
         

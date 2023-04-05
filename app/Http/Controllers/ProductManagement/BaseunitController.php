@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ProductManagement;
 
 use App\Helpers\DatatableBuilder;
 use App\Http\Controllers\Controller;
@@ -54,9 +54,9 @@ class BaseunitController extends Controller
         $this->allowed('base-unit-delete-base-unit');
         try {
             $baseunit = Baseunit::query()->findOrFail(decrypt($baseunit));
-            /*if($baseunit->image){
-                HelperController::removeFile($baseunit->image, 'url');
-            }*/
+            if($baseunit->products->count() > 0){
+                return back()->with(['message' => translate('Cannot be deleted'), 'type' => 'error']);
+            }
             $baseunit->delete();
             return back()->with(['message' => translate('Deleted successfully'), 'type' => 'success']);
         }

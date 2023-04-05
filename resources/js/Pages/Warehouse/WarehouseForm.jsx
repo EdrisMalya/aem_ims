@@ -18,15 +18,17 @@ import { Inertia } from '@inertiajs/inertia'
 import Select2 from '@/Components/Select2'
 import MUISelect from '@/Components/MUISelect'
 
-const WarehouseForm = ({ translate, onClose, warehouse }) => {
-    const { lang, provinces } = usePage().props
+const WarehouseForm = ({ translate, onClose, warehouse, defaultValue }) => {
+    const { lang } = usePage().props
 
     const handleClose = () => {
         onClose()
     }
 
+    const [provinces, setProvinces] = React.useState(undefined)
+
     const { post, processing, setData, data, errors, put } = useForm({
-        name: warehouse?.name,
+        name: defaultValue ? warehouse?.name : defaultValue,
         email: warehouse?.email,
         phone_number: warehouse?.phone_number,
         address: warehouse?.address,
@@ -69,11 +71,10 @@ const WarehouseForm = ({ translate, onClose, warehouse }) => {
     }
 
     React.useEffect(() => {
-        if (typeof provinces == 'undefined') {
-            Inertia.visit(route(route().current(), { ...route().params }), {
-                only: ['provinces'],
-                preserveState: true,
-            })
+        if (typeof provinces === 'undefined') {
+            axios
+                .get(route('partial', { type: 'get_provinces', lang }))
+                .then(res => setProvinces(res.data))
         }
     }, [provinces])
 

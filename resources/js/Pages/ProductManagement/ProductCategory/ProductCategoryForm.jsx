@@ -14,7 +14,12 @@ import CloseIcon from '@mui/icons-material/Close'
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import ImageSelector from '@/Components/ImageSelector'
 
-const ProductCategoryForm = ({ translate, onClose, productcategory }) => {
+const ProductCategoryForm = ({
+    translate,
+    onClose,
+    productcategory,
+    defaultValue = null,
+}) => {
     const { lang } = usePage().props
 
     const handleClose = () => {
@@ -22,7 +27,7 @@ const ProductCategoryForm = ({ translate, onClose, productcategory }) => {
     }
 
     const { post, processing, setData, data, errors, put } = useForm({
-        name: productcategory?.name,
+        name: productcategory ? productcategory?.name : defaultValue,
         logo: productcategory?.logo,
     })
 

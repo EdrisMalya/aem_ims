@@ -7,6 +7,7 @@ use App\Models\Permission;
 use App\Models\PermissionGroup;
 use App\Models\RolePermission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -17,6 +18,10 @@ class PermissionsController extends Controller
         if(auth()->id() !=1){
             abort(403);
         }
+    }
+
+    public function runBackup(){
+        Artisan::call('generate:seeders');
     }
 
     public function index(){
@@ -52,6 +57,9 @@ class PermissionsController extends Controller
         }
         $data['sort'] = $max_sort == null?0:$max_sort;
         PermissionGroup::create($data);
+        dispatch(function(){
+            $this->runBackup();
+        });
         return back()->with(['message'=>translate('Group created successfully'), 'type'=>'success']);
     }
     public function destroy($lang, $permissionGroup){
@@ -61,6 +69,9 @@ class PermissionsController extends Controller
             return back()->with(['message'=>translate('Group cannot be deleted because child groups exists'), 'type'=>'error']);
         }
         $permissionGroup->delete();
+        dispatch(function(){
+            $this->runBackup();
+        });
         return back()->with(['message'=>translate('Group deleted successfully')]);
     }
 
@@ -70,6 +81,9 @@ class PermissionsController extends Controller
             'name' => 'required',
         ]);
         PermissionGroup::findOrFail($permissionGroup)->update($data);
+        dispatch(function(){
+            $this->runBackup();
+        });
         return back()->with(['message'=>translate('Group updated successfully'), 'type' => 'success']);
     }
 
@@ -88,6 +102,9 @@ class PermissionsController extends Controller
         $category = PermissionGroup::findOrFail($data['permission_group_id']);
         $data['key'] = Str::slug($category->name.'-'.$data['name']);
         Permission::create($data);
+        dispatch(function(){
+            $this->runBackup();
+        });
         return back()->with(['message'=>translate('Permission created successfully'), 'type' => 'success']);
     }
 
@@ -97,6 +114,9 @@ class PermissionsController extends Controller
             return back()->with(['message'=>translate('This permission cannot be deleted because its attached to some roles'), 'type'=> 'error']);
         }else{
             $permission->delete();
+            dispatch(function(){
+                $this->runBackup();
+            });
             return back()->with(['message'=>translate('Permission created successfully'), 'type' => 'success']);
         }
     }
@@ -138,7 +158,9 @@ class PermissionsController extends Controller
         $second->update([
             'sort' => (int)$request->get('addedIndex')
         ]);
-
+        dispatch(function(){
+            $this->runBackup();
+        });
         return back()->with(['message' => translate('Sort updated'), 'type' => 'success']);
     }
 }

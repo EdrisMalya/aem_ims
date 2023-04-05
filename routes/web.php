@@ -39,6 +39,10 @@ Route::group(['prefix'=>'{lang}'], function(){
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+            /********************************** Partial routes **************************************/
+
+            Route::any('partials/{type}', [\App\Http\Controllers\PartialController::class, 'index'])->name('partial');
+
             /************************** This code should never be deleted ****************************/
 
             /**** Other routes ****/
@@ -52,13 +56,24 @@ Route::group(['prefix'=>'{lang}'], function(){
                 Route::resource('product', \App\Http\Controllers\ProductManagement\ProductController::class);
 
                 /***************************** Productcategory Routes ****************************/
-                Route::resource('productcategory', \App\Http\Controllers\ProductcategoryController::class);
+                Route::resource('productcategory', \App\Http\Controllers\ProductManagement\ProductcategoryController::class);
 
                 /***************************** Brand Routes ****************************/
-                Route::resource('brand', \App\Http\Controllers\BrandController::class);
+                Route::resource('brand', \App\Http\Controllers\ProductManagement\BrandController::class);
 
                 /***************************** Baseunit Routes ****************************/
-                Route::resource('baseunit', \App\Http\Controllers\BaseunitController::class);
+                Route::resource('baseunit', \App\Http\Controllers\ProductManagement\BaseunitController::class);
+
+                /****************************** Barcode printer routes ***************************/
+                Route::get('barcode/printer', [\App\Http\Controllers\ProductManagement\BarcodePrinterController::class, 'index'])->name('barcode-printer.index');
+            });
+
+            /************************************* Purchases management routes ****************************/
+            Route::prefix('purchases/management')->group(function(){
+                Route::resource('purchase', \App\Http\Controllers\Purchases\PurchaseController::class);
+
+                /************************* Purchase return routes ****************************/
+                Route::resource('purchase-return', \App\Http\Controllers\Purchases\PurchaseReturnController::class);
             });
 
             /*************************************** User management routes ****************************************/
@@ -75,7 +90,7 @@ Route::group(['prefix'=>'{lang}'], function(){
                 Route::resource('customer', \App\Http\Controllers\Configurations\StoreSettings\CustomerController::class);
 
                 /***************************** Supplier Routes ****************************/
-                Route::resource('supplier', \App\Http\Controllers\SupplierController::class);
+                Route::resource('supplier', \App\Http\Controllers\UserManagement\SupplierController::class);
 
                 /*************************************** Role routes *****************************************/
                 Route::resource('role', \App\Http\Controllers\UserManagement\RoleController::class);
@@ -86,6 +101,7 @@ Route::group(['prefix'=>'{lang}'], function(){
 
                 /******************************************* Log activities ************************************/
                 Route::get('log/activities', [\App\Http\Controllers\UserManagement\LogActivityController::class, 'index'])->name('log.activities.index');
+                Route::post('restore/log', [\App\Http\Controllers\UserManagement\LogActivityController::class, 'restore'])->name('restore.log');
                 Route::delete('delete/log/activity/{activity}', [\App\Http\Controllers\UserManagement\LogActivityController::class, 'deleteLogActivity'])->name('destroy.activity');
 
                 /*************************************** Permission routes ************************************/
@@ -119,6 +135,9 @@ Route::group(['prefix'=>'{lang}'], function(){
 
                     /***************************** Warehouse Routes ****************************/
                     Route::resource('warehouse', \App\Http\Controllers\Configurations\StoreSettings\WarehouseController::class);
+
+                    /***************************** Payment type Routes ****************************/
+                    Route::resource('payment-type', \App\Http\Controllers\Configurations\StoreSettings\PaymentTypeController::class);
                 });
 
                 /************************************ Public website routes ********************************************/

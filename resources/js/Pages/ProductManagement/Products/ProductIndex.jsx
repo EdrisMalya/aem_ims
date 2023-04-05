@@ -6,9 +6,15 @@ import ProtectedComponent from '@/Components/ProtectedComponent'
 import { Button } from '@mui/material'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import { Link } from '@inertiajs/inertia-react'
+import Datatable from '@/Components/Datatable/Datatable'
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye'
+import { Inertia } from '@inertiajs/inertia'
+import FilterAltIcon from '@mui/icons-material/FilterAlt'
+import ProductFilterModel from '@/Pages/ProductManagement/Products/Components/ProductFilterModel'
 
-const ProductIndex = ({ lang }) => {
+const ProductIndex = ({ lang, products, filters }) => {
     const { translate } = useLanguage()
+    const [filter, setFilter] = React.useState(false)
     return (
         <Authenticated
             active={'product-management'}
@@ -28,6 +34,112 @@ const ProductIndex = ({ lang }) => {
                     </Link>
                 </ProtectedComponent>
             </div>
+            <div className={'mt-8'}>
+                <Datatable
+                    data={products}
+                    fromResource={true}
+                    editRole={'product-edit-product'}
+                    handleEditAction={data => {
+                        Inertia.get(
+                            route('product.edit', { lang, product: data.id }),
+                        )
+                    }}
+                    deleteRole={'product-delete-product'}
+                    datatableFilters={[
+                        {
+                            element: (
+                                <Button
+                                    onClick={() => setFilter(true)}
+                                    endIcon={
+                                        <FilterAltIcon fontSize={'small'} />
+                                    }
+                                    variant={'outlined'}>
+                                    Filter
+                                </Button>
+                            ),
+                        },
+                    ]}
+                    otherOptions={[
+                        {
+                            icon: (
+                                <RemoveRedEyeIcon
+                                    color={'primary'}
+                                    fontSize={'small'}
+                                />
+                            ),
+                            role: 'product-view-product-details',
+                            handleClick: data => {
+                                Inertia.get(
+                                    route('product.show', {
+                                        ...route().params,
+                                        product: data.id,
+                                    }),
+                                )
+                            },
+                        },
+                    ]}
+                    columns={[
+                        {
+                            name: 'Product Name',
+                            key: 'image',
+                            className: 'w-12 h-12',
+                            data_type: 'image',
+                        },
+                        {
+                            name: 'Product Name',
+                            key: 'name',
+                            sort: true,
+                        },
+                        {
+                            name: 'Category',
+                            key: 'category.name',
+                            sort: true,
+                        },
+                        {
+                            name: 'Product code',
+                            key: 'code',
+                            sort: true,
+                            className:
+                                'p-1 bg-green-500 text-white rounded-lg text-xs',
+                        },
+                        {
+                            name: 'Brand',
+                            key: 'brand.name',
+                        },
+                        {
+                            name: 'Price',
+                            key: 'price',
+                            sort: true,
+                            className: 'whitespace-nowrap',
+                        },
+                        {
+                            name: 'Unit',
+                            key: 'unit.name',
+                            className:
+                                'p-1 bg-green-500 text-white rounded-lg text-xs',
+                        },
+                        {
+                            name: 'In stock',
+                            key: 'in_stock',
+                            sort: true,
+                        },
+                        {
+                            name: 'Created on',
+                            key: 'created_at',
+                            data_type: 'date',
+                            format: 'YYYY-MM-DD hh:mm A',
+                            sort: true,
+                        },
+                    ]}
+                />
+            </div>
+            {filter && (
+                <ProductFilterModel
+                    filters={filters}
+                    translate={translate}
+                    onClose={() => setFilter(false)}
+                />
+            )}
         </Authenticated>
     )
 }

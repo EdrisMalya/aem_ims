@@ -47,7 +47,7 @@ class UsersTableSeeder extends Seeder
                 'status' => 1,
                 'change_password' => 0,
                 'image' => 'users_picture/KMLcxCM8DqWwlyWeB41nUOwADC5qPA2YDLQWrvQh.jpg',
-                'remember_token' => NULL,
+                'remember_token' => 'ca5QOKwG9b7sEOeWjTSj7y1mJxwqBqmzMNKgYWoM8jnWOdeoAaT9PwCpJPWQ',
                 'created_at' => '2022-12-11 07:05:06',
                 'updated_at' => '2022-12-18 11:41:26',
             ),

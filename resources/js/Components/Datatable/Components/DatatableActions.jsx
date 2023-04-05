@@ -18,10 +18,11 @@ export default function DatatableActions({
     const [pageName, setPageName] = useState(null)
 
     useEffect(() => {
-        let title = window.document
-            .getElementsByTagName('title')[0]
-            .innerText?.split('-')[0]
-        setPageName(title)
+        let title = window.document.getElementsByTagName('title')[0]
+        if (typeof title !== 'undefined') {
+            let text = title.innerText?.split('-')[0]
+            setPageName(text)
+        }
     }, [])
 
     return (

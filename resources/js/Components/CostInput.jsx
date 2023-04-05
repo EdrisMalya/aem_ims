@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { IMaskInput } from 'react-imask'
 import { NumericFormat } from 'react-number-format'
 import TextField from '@mui/material/TextField'
+import { usePage } from '@inertiajs/inertia-react'
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
     const { onChange, ...other } = props
@@ -32,6 +33,7 @@ const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
     ref,
 ) {
     const { onChange, ...other } = props
+    const { system_setting } = usePage().props
 
     return (
         <NumericFormat
@@ -47,7 +49,7 @@ const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
             }}
             thousandSeparator
             valueIsNumericString
-            prefix="$ "
+            prefix={system_setting.data.currency.symbol + ' '}
         />
     )
 })
@@ -63,6 +65,8 @@ export default function CostInput({
     label,
     placeholder = null,
     size = 'small',
+    required = false,
+    error = null,
 }) {
     const handleChange = event => {
         if (onChange) {
@@ -72,7 +76,10 @@ export default function CostInput({
 
     return (
         <TextField
+            required={required}
             label={label}
+            error={error}
+            helperText={error}
             placeholder={placeholder}
             size={size}
             value={value}
